@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReadingBuddies</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <header id="popup-header" class="app-header-container">
+        <div id="popup-header" class="app-header r1 c0-6">
+            <p id="popup-title" class="app-title">ReadingBuddies</p>
+        </div>
+        <div id="app-toggle-container" class="app-toggle-container r1 c6-10">
+            <input id="app-toggle" class="app-toggle-button" type="button" value="Disable" />
+        </div>
+    </header>
+    <main>
+        <div id="all-tools-container" class="main-container">
+            <!-- LINEHEIGHT -->
+            <div id="lineheight-container" class="tool-container collapsed inactive">
+                <div id="lineheight-header" class="tool-header r1 c0-10">
+                    <p id="lineheight-title" class="tool-title">Line Height</p>
+                </div>
+                <div class="on-off-container r1 c6-10">
+                    <p id="lineheight-on-off" class="on-off">OFF</p>
+                </div>
+                <div id="lineheight-toggle-container" class="toggle-container r2 c0-10">
+                    <input id="lineheight-toggle" class="toggle-button" type="button" value="Enable" />
+                </div>
+
+                <div id="lineheight-input-container_1" class="input-container r3 c0-6">
+                    <input id="lineheight-slider" class="slider-input" type="range" min="1.0" max="5.0" value="2.0" step="0.1" />
+                </div>
+                <div id="lineheight-input-container_2" class="input-container r3 c6-10">
+                    <label for="lineheight-num">
+                        <input id="lineheight-num" class="num-input" type="number" min="0" value="2.0" step="0.1" />
+                    pt</label>
+                </div>
+                <!--
+                <div id="lineheight-factor-input-container_1" class="input-container inactive r4 c0-6">
+                    <input id="lineheight-factor-slider" class="slider-input" type="range" min="50" max="500" value="150" step="1" />
+                </div>
+                <div id="lineheight-factor-input-container_2" class="input-container inactive r4 c6-10">
+                    <label for="lineheight-factor-num">
+                        <input id="lineheight-factor-num" class="num-input" type="number" min="50" max="500" value="150" step="1" />
+                    %</label>
+                </div>
+                -->
+
+                <div id="lineheight-lists-container" class="input-container r4 c0-10 centered-div">
+                    <input id="lineheight-lists" type="checkbox" value="lineheight-include-lists" />
+                    <label for="lineheight-lists">Include lists</label>
+                </div>
+            </div>
+
+            <!-- SPACING -->
+            <div id="spacing-container" class="tool-container collapsed inactive">
+                <div id="spacing-header" class="tool-header r1 c0-10">
+                    <p id="spacing-title" class="tool-title">Spacing</p>
+                </div>
+                <div class="on-off-container r1 c6-10">
+                    <p id="spacing-on-off" class="on-off">OFF</p>
+                </div>
+                <!-- WORD SPACE -->
+                <div id="wordsp-container" class="child-container inactive r2 c0-10">
+                    <div id="wordsp-header" class="child-tool-header r1 c0-6">
+                        <p id="wordsp-title" class="child-tool-title">Word Spacing</p>
+                    </div>
+                    <div id="wordsp-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="wordsp-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+                    <div id="wordsp-input-container_1" class="input-container r2 c0-6">
+                        <input id="wordsp-slider" class="slider-input" type="range" min="0" max="1.5" value="0.5" step="0.1" />
+                    </div>
+                    <div id="wordsp-input-container_2" class="input-container r2 c6-10">
+                        <label for="wordsp-num">
+                            <input id="wordsp-num" class="num-input" type="number" min="0" value="0.5" step="0.1" />
+                        em</label>
+                    </div>
+                </div>
+                <!-- LETTER SPACE  -->
+                <div id="lettersp-container" class="child-container inactive r3 c0-10">
+                    <div id="lettersp-header" class="child-tool-header r1 c0-6">
+                        <p id="lettersp-title" class="child-tool-title">Letter Spacing</p>
+                    </div>
+                    <div id="lettersp-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="lettersp-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+
+                    <div id="lettersp-input-container_1" class="input-container r2 c0-6">
+                        <input id="lettersp-slider" class="slider-input" type="range" min="0" max="0.33" value="0.1" step="0.01" />
+                    </div>
+                    <div id="lettersp-input-container_2" class="input-container r2 c6-10">
+                        <label for="lettersp-num">
+                            <input id="lettersp-num" class="num-input" type="number" min="0" value="0.1" step="0.01" />
+                        em</label>
+                    </div>
+                </div>
+                <div class="bumper"></div>
+            </div>
+
+            <!-- FONT -->
+            <div id="font-container" class="tool-container collapsed inactive">
+                <div id="font-header" class="tool-header r1 c0-10">
+                    <p id="font-title" class="tool-title">Font</p>
+                </div>
+                <div class="on-off-container r1 c6-10">
+                    <p id="font-on-off" class="on-off">OFF</p>
+                </div>
+                <!-- FONT FAMILY -->
+                <div id="fontfam-container" class="child-container inactive r2 c0-10">
+                    <div id="fontfam-header" class="child-tool-header r1 c0-6">
+                        <p id="fontfam-title" class="child-tool-title">Font Family</p>
+                    </div>
+                    <div id="fontfam-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="fontfam-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+
+                    <div id="fontfam-input-container_1" class="input-container r2 c0-10">
+                        <label for="fontfam-select" class="select-input-label">Web fonts:
+                            <select name="fontfam" id="fontfam-select" class="select-input">
+                                <option id="arial" value="Arial, Helvetica, sans-serif" selected>Arial</option>
+                                <option id="calibri" value="Calibri, sans-serif">Calibri</option>
+                                <option id="comic" value="Comic Sans MS, Comic Sans, cursive">Comic Sans</option>
+                                <option id="courier" value="Courier New, Courier, monospace">Courier</option>
+                                <option id="georgia" value="Georgia, serif">Georgia</option>
+                                <option id="gillsans" value="Gill Sans, Gill Sans MT, sans-serif">Gill Sans</option>
+                                <option id="lucidaconsole" value="Lucida Console, Monaco, monospace">Lucida Console</option>
+                                <option id="lucidasans" value="Lucida Sans, Lucida Sans Regular, Lucida Sans Unicode, sans-serif">Lucida Sans</option>
+                                <option id="segoe" value="Segoe UI, sans-serif">Segoe UI</option>
+                                <option id="tahoma" value="Tahoma, sans-serif">Tahoma</option>
+                                <option id="times" value="Times New Roman, Times, serif">Times New Roman</option>
+                                <option id="trebuchet" value="Trebuchet MS, sans-serif">Trebuchet MS</option>
+                                <option id="verdana" value="Verdana, sans-serif">Verdana</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div id="fontfam-input-container_2" class="input-container r3 c0-10">
+                        <label for="fontfam-text" class="text-input-label">Other:
+                            <input id="fontfam-text" type="text" class="text-input"/>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- FONT SIZE -->
+                <div id="fontsize-container" class="child-container inactive r3 c0-10">
+                    <div id="fontsize-header" class="child-tool-header r1 c0-6">
+                        <p id="fontsize-title" class="child-tool-title">Font Size</p>
+                    </div>
+                    <div id="fontsize-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="fontsize-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+
+                    <div id="fontsize-input-container_1" class="input-container r2 c0-6">
+                        <input id="fontsize-slider" class="slider-input" type="range" min="6" max="24" value="12" step="1" />
+                    </div>
+                    <div id="fontsize-input-container_2" class="input-container r2 c6-10">
+                        <label for="fontsize-num">
+                            <input id="fontsize-num" class="num-input" type="number" min="1" value="12" step="1" />
+                        pt</label>
+                    </div>
+                    <!--
+                    <div id="fontsize-factor-input-container_1" class="input-container inactive r3 c0-6">
+                        <input id="fontsize-factor-slider" class="slider-input" type="range" min="50" max="300" value="100" step="10" />
+                    </div>
+                    <div id="fontsize-factor-input-container_2" class="input-container inactive r3 c6-10">
+                        <label for="fontsize-factor-num">
+                            <input id="fontsize-factor-num" class="num-input" type="number" min="50" max="300" value="100" step="10" />
+                        %</label>
+                    </div>
+                    -->
+                </div>
+
+                <!-- FONT WEIGHT -->
+                <div id="fontweight-container" class="child-container inactive r4 c0-10">
+                    <div id="fontweight-header" class="child-tool-header r1 c0-6">
+                        <p id="fontweight-title" class="child-tool-title">Font Weight</p>
+                    </div>
+                    <div id="fontweight-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="fontweight-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+                    <div id="fontweight-input-container" class="input-container r2 c0-6">
+                        <input id="fontweight-slider" class="slider-input" type="range" min="100" max="900" value="700" step="100" />
+                    </div>
+                    <div id="fontweight-input-container" class="ch-r3c2 input-container r2 c6-10">
+                        <input id="fontweight-num" class="num-input" type="number" min="100" max="900" value="700" step="100" />
+                    </div>
+                </div>
+
+                <!-- FONT COLOR -->
+                <div id="fontcolor-container" class="child-container inactive r5 c0-10">
+                    <div id="fontcolor-header" class="child-tool-header r1 c0-6">
+                        <p id="fontcolor-title" class="child-tool-title">Font Color</p>
+                    </div>
+                    <div id="fontcolor-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="fontcolor-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+                    <div id="fontcolor-input-container" class="input-container r2 c0-10">
+                        <label for="fontcolor-color">Color:
+                            <input id="fontcolor-color" type="color" class="color-input" value="#000000" />
+                        </label>
+                    </div>
+                </div>
+
+                <!-- BACKGROUND COLOR -->
+                <div id="backgroundcolor-container" class="child-container inactive r6 c0-10">
+                    <div id="backgroundcolor-header" class="child-tool-header r1 c0-6">
+                        <p id="backgroundcolor-title" class="child-tool-title">Background Color</p>
+                    </div>
+                    <div id="backgroundcolor-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="backgroundcolor-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+                    <div id="backgroundcolor-input-container" class="input-container r2 c0-6">
+                        <label for="backgroundcolor-color">Color:
+                            <input id="backgroundcolor-color" type="color" class="color-input" value="#ffffff" />
+                        </label>
+                    </div>
+
+                    <div id="backgroundcolor-tags-container" class="input-container r2 c6-10">
+                        <input id="backgroundcolor-divs" type="checkbox" value="backgroundcolor-include-divs" />
+                        <label for="backgroundcolor-divs">Include divs</label>
+                        <br/>
+                        <input id="backgroundcolor-tables" type="checkbox" value="backgroundcolor-include-tables" />
+                        <label for="backgroundcolor-tables">Include tables</label>
+                    </div>
+                </div>
+
+                <!-- FILTERS
+                <div id="contrast-container" class="child-container inactive r7 c0-10">
+                    <div id="contrast-header" class="child-tool-header r1 c0-6">
+                        <p id="contrast-title" class="child-tool-title">Contrast</p>
+                    </div>
+                    <div id="contrast-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="contrast-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+
+                    <div id="contrast-container_1" class="input-container r2 c0-6">
+                        <input id="contrast-slider" class="slider-input" type="range" min="0" max="400" value="300" step="20" />
+                    </div>
+                    <div id="contrast-container_2" class="input-container r2 c6-10">
+                        <label for="contrast-num">
+                            <input id="contrast-num" class="num-input" type="number" min="0" max="400" value="300" step="20" />
+                        %</label>
+                    </div>
+                </div>
+
+                <div id="invert-container" class="child-container inactive r8 c0-10">
+                    <div id="invert-header" class="child-tool-header r1 c0-6">
+                        <p id="invert-title" class="child-tool-title">Invert</p>
+                    </div>
+                    <div id="invert-toggle-container" class="child-toggle-container r1 c6-10">
+                        <input id="invert-toggle" class="child-toggle-button" type="button" value="Enable" />
+                    </div>
+
+                    <div id="invert-container_1" class="input-container r3 c0-6">
+                        <input id="invert-slider" class="slider-input" type="range" min="0" max="100" value="100" step="5" />
+                    </div>
+                    <div id="invert-container_2" class="input-container r3 c6-10">
+                        <label for="invert-num">
+                            <input id="invert-num" class="num-input" type="number" min="0" max="100" value="100" step="5" />
+                        %</label>
+                    </div>
+                </div> -->
+
+                <div class="bumper"></div>
+            </div>
+
+            <!-- RULER -->
+            <div id="ruler-container" class="tool-container collapsed inactive">
+                <div id="ruler-header" class="tool-header r1 c0-10">
+                    <p id="ruler-title" class="tool-title">Reading Ruler</p>
+                </div>
+                <div class="on-off-container r1 c6-10">
+                    <p id="ruler-on-off" class="on-off">OFF</p>
+                </div>
+                <div id="ruler-toggle-container" class="toggle-container r2 c0-10">
+                    <input id="ruler-toggle" class="toggle-button" type="button" value="Enable" />
+                </div>
+
+
+                <div id="ruler-height-container" class="child-container r3 c0-10 inactive">
+                    <div id="ruler-height-header" class="child-tool-header r1 c0-10">
+                        <p id="ruler-height-title" class="child-tool-title">Height</p>
+                    </div>
+                    <div id="ruler-height-input-container_1" class="input-container r2 c0-6">
+                        <input id="ruler-height-slider" class="slider-input" type="range" min="2" max="150" value="32" step="1" />
+                    </div>
+                    <div id="ruler-height-input-container_2" class="input-container r2 c6-10">
+                        <label for="ruler-height-num">
+                            <input id="ruler-height-num" class="num-input" type="number" min="0" value="32" step="1" />
+                        px</label>
+                    </div>
+                </div>
+
+                <div id="ruler-color-container" class="child-container r4 c0-10 inactive">
+                    <div id="ruler-color-header" class="child-tool-header r1 c0-10">
+                        <p id="ruler-color-title" class="child-tool-title">Color</p>
+                    </div>
+                    <div id="ruler-color-input-container" class="input-container r2 c0-6">
+                        <label for="ruler-color">Color:
+                            <input id="ruler-color" type="color" class="color-input" value="#00ffff" />
+                        </label>
+                    </div>
+                </div>
+
+                <div id="ruler-opacity-container" class="child-container r5 c0-10 inactive">
+                    <div id="ruler-opacity-header" class="child-tool-header r1 c0-10">
+                        <p id="ruler-opacity-title" class="child-tool-title">Opacity</p>
+                    </div>
+                    <div id="ruler-opacity-input-container_1" class="input-container r2 c0-6">
+                        <input id="ruler-opacity-slider" class="slider-input" type="range" min="0" max="100" value="30" step="1" />
+                    </div>
+                    <div id="ruler-opacity-input-container_2" class="input-container r2 c6-10">
+                        <label for="ruler-opacity-num">
+                            <input id="ruler-opacity-num" class="num-input" type="number" min="0" max="100" value="30" step="1" />
+                        %</label>
+                    </div>
+                </div>
+                <div class="bumper"></div>
+            </div>
+
+            <!-- OVERLAY -->
+            <div id="overlay-container" class="tool-container collapsed inactive">
+                <div id="overlay-header" class="tool-header r1 c0-10">
+                    <p id="overlay-title" class="tool-title">Color Overlay</p>
+                </div>
+                <div class="on-off-container r1 c6-10">
+                    <p id="overlay-on-off" class="on-off">OFF</p>
+                </div>
+                <div id="overlay-toggle-container" class="toggle-container r2 c0-10">
+                    <input id="overlay-toggle" class="toggle-button" type="button" value="Enable" />
+                </div>
+
+                <div id="overlay-color-container" class="child-container r3 c0-10 inactive">
+                    <div id="overlay-color-header" class="child-tool-header r1 c0-10">
+                        <p id="overlay-color-title" class="child-tool-title">Color</p>
+                    </div>
+                    <div id="overlay-color-input-container" class="input-container r2 c0-6">
+                        <label for="overlay-color">Color:
+                            <input id="overlay-color" type="color" class="color-input" value="#ffcc00" />
+                        </label>
+                    </div>
+                </div>
+
+                <div id="overlay-opacity-container" class="child-container r4 c0-10 inactive">
+                    <div id="overlay-opacity-header" class="child-tool-header r1 c0-10">
+                        <p id="overlay-opacity-title" class="child-tool-title">Opacity</p>
+                    </div>
+                    <div id="overlay-opacity-input-container_1" class="input-container r2 c0-6">
+                        <input id="overlay-opacity-slider" class="slider-input" type="range" min="0" max="100" value="10" step="1" />
+                    </div>
+                    <div id="overlay-opacity-input-container_2" class="input-container r2 c6-10">
+                        <label for="overlay-opacity-num">
+                            <input id="overlay-opacity-num" class="num-input" type="number" min="0" max="100" value="10" step="1" />
+                        %</label>
+                    </div>
+                </div>
+                <div class="bumper"></div>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="popup.js"></script>
+</body>
+</html>
